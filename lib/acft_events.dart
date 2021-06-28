@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class AcftEventsPage extends StatefulWidget {
   const AcftEventsPage({Key? key}) : super(key: key);
@@ -19,9 +20,9 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
               backgroundColor: Colors.black,
               expandedHeight: 250,
               pinned: true,
-              floating: false,
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
+                collapseMode: CollapseMode.parallax,
                 title: Text('ACFT'),
                 background: Image.asset(
                   'images/acft_cover.jpeg',
@@ -35,8 +36,8 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                   labelColor: Colors.black87,
                   unselectedLabelColor: Colors.grey,
                   tabs: [
-                    Tab( text: "Events"),
-                    Tab( text: "Alternate"),
+                    Tab(text: "Events"),
+                    Tab(text: "Alternate"),
                   ],
                 ),
               ),
@@ -45,63 +46,62 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
             SliverList(
               delegate: SliverChildListDelegate([
                 Card(
-                  child: Container(
-                    color: Colors.red,
-                    height: 100,
+                  color: Colors.red,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Container(
+                        child: YoutubePlayer(
+                          controller: _controller,
+                          showVideoProgressIndicator: true,
+                          progressIndicatorColor: Colors.amber,
+                          progressColors: ProgressBarColors(
+                            playedColor: Colors.amber,
+                            handleColor: Colors.amberAccent,
+                          ),
+                        ),
+                        color: Colors.blueGrey,
+                        height: 150,
+                      ),
+                      ListTile(
+                        title: Text('Event'),
+                        subtitle: Text('Description'),
+                      ),
+                    ],
                   ),
                 ),
                 Card(
-                  child: Container(
-                    color: Colors.red,
-                    height: 100,
+                  color: Colors.red,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Container(
+                        child: Center(child: Text('Image')),
+                        color: Colors.blueGrey,
+                        height: 150,
+                      ),
+                      ListTile(
+                        title: Text('Event'),
+                        subtitle: Text('Description'),
+                      ),
+                    ],
                   ),
                 ),
                 Card(
-                  child: Container(
-                    color: Colors.red,
-                    height: 100,
-                  ),
-                ),
-                Card(
-                  child: Container(
-                    color: Colors.red,
-                    height: 100,
-                  ),
-                ),
-                Card(
-                  child: Container(
-                    color: Colors.red,
-                    height: 100,
-                  ),
-                ),
-                Card(
-                  child: Container(
-                    color: Colors.red,
-                    height: 100,
-                  ),
-                ),
-                Card(
-                  child: Container(
-                    color: Colors.red,
-                    height: 100,
-                  ),
-                ),
-                Card(
-                  child: Container(
-                    color: Colors.red,
-                    height: 100,
-                  ),
-                ),
-                Card(
-                  child: Container(
-                    color: Colors.red,
-                    height: 100,
-                  ),
-                ),
-                Card(
-                  child: Container(
-                    color: Colors.red,
-                    height: 100,
+                  color: Colors.red,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Container(
+                        child: Center(child: Text('Image')),
+                        color: Colors.blueGrey,
+                        height: 150,
+                      ),
+                      ListTile(
+                        title: Text('Event'),
+                        subtitle: Text('Description'),
+                      ),
+                    ],
                   ),
                 ),
               ]),
@@ -111,7 +111,19 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
       ),
     );
   }
+
+  YoutubePlayerController _controller = YoutubePlayerController(
+    initialVideoId: 'Eef09p0NIrM',
+    flags: YoutubePlayerFlags(
+      autoPlay: false,
+      mute: false,
+      hideThumbnail: false,
+      hideControls: false,
+      controlsVisibleAtStart: false,
+    ),
+  );
 }
+
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   _SliverAppBarDelegate(this._tabBar);
 
