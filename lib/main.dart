@@ -32,18 +32,15 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
         cardTheme: CardTheme(
-            clipBehavior: Clip.antiAlias,
-            margin: EdgeInsets.all(8),
-        shape: BeveledRectangleBorder(
-        borderRadius: const BorderRadius.all(
-        Radius.circular(15.0),
-
-    ),
-    ),
+          clipBehavior: Clip.antiAlias,
+          shape: BeveledRectangleBorder(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(20),
+            ),
+          ),
         ),
       ),
       home: AcftEventsPage(),
     );
   }
-
 }

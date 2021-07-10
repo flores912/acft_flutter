@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class AcftEventsPage extends StatefulWidget {
   const AcftEventsPage({Key? key}) : super(key: key);
@@ -17,44 +16,50 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
         title: Text('ACFT'),
         centerTitle: true,
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Main Events',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: Text(
+                'Main Events',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
-              GridView(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3, childAspectRatio: .8),
-                  children: [
-                    EventCard(),
-                    EventCard(),
-                    EventCard(),
-                    EventCard(),
-                    EventCard(),
-                    EventCard()
-                  ]),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Alternate Events',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
+            ),
+            GridView(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 3 /2.3,
+                    mainAxisSpacing: 0,
+                    crossAxisSpacing: 0),
+                children: [
+                  EventCard(),
+                  EventCard(),
+                  EventCard(),
+                  EventCard(),
+                  EventCard(),
+                  EventCard(),
+                ]),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8,0,8,16),
+              child: Text(
+                'Alternate Events',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
-              ListView(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  children: [EventCard(), EventCard(), EventCard()]),
-            ],
-          ),
+            ),
+            GridView(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    childAspectRatio: 1,
+                    mainAxisSpacing: 0,
+                    crossAxisSpacing: 0),
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                children: [EventCard(), EventCard(), EventCard()]),
+          ],
         ),
       ),
     );
@@ -69,23 +74,43 @@ class EventCard extends StatefulWidget {
 class _EventCardState extends State<EventCard> {
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      children: [
-        Card(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
-                height: 100,
-                color: Colors.amber,
-              ),
-              ListTile(
-                title: Center(child: Text('Event')),
-              )
-            ],
+    return GestureDetector(
+      onTap: () {
+        showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return Column(
+                children: [
+                  Container(color:Colors.red,height:200,child: Center(child: Text('Video')),),
+                  Text('Title',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                  Text('description'),
+                  Container(child: Text('fitness categories'),),
+                  ElevatedButton(onPressed: (){
+                  }, child: Text('Tips'))
+                ],
+              );
+            });
+      },
+      child: Wrap(
+        children: [
+          Card(
+            child: Column(
+              children: [
+                Container(
+                  height: 100,
+                  color: Colors.amber,
+                ),
+                Container(
+                  height: 50,
+                  child: ListTile(
+                    title: Center(child: Text('Event')),
+                  ),
+                )
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
