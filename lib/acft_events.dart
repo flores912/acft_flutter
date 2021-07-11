@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+//TODO: MAKE LAYOUT RESPONSIVE!!!!!
 
 class AcftEventsPage extends StatefulWidget {
   const AcftEventsPage({Key? key}) : super(key: key);
@@ -21,18 +22,20 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.all(1.0),
+              padding: const EdgeInsets.all(16.0),
               child: Text(
                 'Main Events',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
             ),
+            //Todo:fix aspect ratios for grids
             GridView(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 3 / 2.3,
+                    childAspectRatio: MediaQuery.of(context).size.width /
+                        (MediaQuery.of(context).size.height / 2.5),
                     mainAxisSpacing: 0,
                     crossAxisSpacing: 0),
                 children: [
@@ -53,7 +56,8 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
             GridView(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    childAspectRatio: 1,
+                    childAspectRatio: MediaQuery.of(context).size.width /
+                        (MediaQuery.of(context).size.height / 1.5),
                     mainAxisSpacing: 0,
                     crossAxisSpacing: 0),
                 physics: NeverScrollableScrollPhysics(),
@@ -117,12 +121,18 @@ class _EventCardState extends State<EventCard> {
                                     child: Column(
                                       children: [
                                         Text(
-                                          'fitness components',overflow: TextOverflow.ellipsis,maxLines: 2,
-                                          textAlign:TextAlign.center,style: TextStyle(
-                                              fontWeight: FontWeight.bold,),
+                                          'fitness components',
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
-                                        Text('Description',
-                                          textAlign:TextAlign.center,)
+                                        Text(
+                                          'Description',
+                                          textAlign: TextAlign.center,
+                                        )
                                       ],
                                     ),
                                   ),
@@ -130,11 +140,18 @@ class _EventCardState extends State<EventCard> {
                                     child: Column(
                                       children: [
                                         Text(
-                                          'standard equipment', textAlign:TextAlign.center,overflow: TextOverflow.ellipsis,maxLines: 2,
+                                          'standard equipment',
+                                          textAlign: TextAlign.center,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ),
-                                        Text('Description',overflow: TextOverflow.ellipsis, textAlign:TextAlign.center,)
+                                        Text(
+                                          'Description',
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.center,
+                                        )
                                       ],
                                     ),
                                   ),
@@ -142,11 +159,18 @@ class _EventCardState extends State<EventCard> {
                                     child: Column(
                                       children: [
                                         Text(
-                                          'field test', textAlign:TextAlign.center,overflow: TextOverflow.ellipsis,maxLines: 2,
+                                          'field test',
+                                          textAlign: TextAlign.center,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ),
-                                        Text('Description',overflow: TextOverflow.ellipsis, textAlign:TextAlign.center,)
+                                        Text(
+                                          'Description',
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.center,
+                                        )
                                       ],
                                     ),
                                   )
@@ -160,8 +184,37 @@ class _EventCardState extends State<EventCard> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child:
-                        ElevatedButton(onPressed: () {}, child: Text('Tips')),
+                    child: ElevatedButton(
+                        onPressed: () {
+                          showModalBottomSheet(
+                              context: context,
+                              builder: (context) {
+                                return Container(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text('Proper Technique'),
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            color: Colors.red,
+                                            height: 100,
+                                            child: Text('image'),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                );
+                              });
+                        },
+                        child: Text('Tips')),
                   )
                 ],
               );
