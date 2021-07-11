@@ -81,12 +81,57 @@ class _EventCardState extends State<EventCard> {
             builder: (context) {
               return Column(
                 children: [
-                  Container(color:Colors.red,height:200,child: Center(child: Text('Video')),),
-                  Text('Title',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-                  Text('description'),
-                  Container(child: Text('fitness categories'),),
-                  ElevatedButton(onPressed: (){
-                  }, child: Text('Tips'))
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(color:Colors.red,height:200,child: Center(child: Text('Video')),),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('Title',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('description'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(height: 100,
+                      child: Card(child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Column(
+                                  children: [
+                                    Text('fitness components',style: TextStyle(fontWeight: FontWeight.bold),),
+                                    Text('Description')
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    Text('standard equipment',style: TextStyle(fontWeight: FontWeight.bold),),
+                                    Text('Description')
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    Text('field test',style: TextStyle(fontWeight: FontWeight.bold),),
+                                    Text('Description')
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(onPressed: (){
+                    }, child: Text('Tips')),
+                  )
                 ],
               );
             });
