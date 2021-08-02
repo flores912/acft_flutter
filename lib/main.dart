@@ -1,6 +1,5 @@
 import 'package:acft_flutter/acft_events.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 
 void main() {
   runApp(MyApp());

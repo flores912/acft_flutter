@@ -9,9 +9,10 @@ class Event {
   final String fieldTest;
   final String fitnessComponents;
   final String standardEquipment;
+  final String eventImage;
 
   Event(this.title, this.description, this.tips, this.technique, this.videoId,
-      this.fieldTest, this.fitnessComponents, this.standardEquipment);
+      this.fieldTest, this.fitnessComponents, this.standardEquipment, this.eventImage);
 
   int calculateMDLScore(int pounds) {
     int score = 0;

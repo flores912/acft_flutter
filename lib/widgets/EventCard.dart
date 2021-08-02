@@ -1,11 +1,13 @@
+
 import 'package:acft_flutter/models/event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+//todo: fix device orientation when dismissed on full screen youtube video
 class EventCard extends StatefulWidget {
-
-
-  final  Event event;
+  final Event event;
 
   const EventCard({Key? key, required this.event}) : super(key: key);
   @override
@@ -13,16 +15,14 @@ class EventCard extends StatefulWidget {
 }
 
 class _EventCardState extends State<EventCard> {
-
-
   double _volume = 100;
   bool _muted = false;
   bool _isPlayerReady = false;
   late PlayerState _playerState;
   late YoutubeMetaData _videoMetaData;
+  late Event event;
 
-
-  late YoutubePlayerController _controller ;
+  late YoutubePlayerController _controller;
   void listener() {
     if (_isPlayerReady && mounted && !_controller.value.isFullScreen) {
       setState(() {
@@ -30,17 +30,23 @@ class _EventCardState extends State<EventCard> {
         _videoMetaData = _controller.metadata;
       });
     }
-
   }
+
   @override
   void initState() {
-    _controller =YoutubePlayerController(initialVideoId: widget.event.videoId,
-    flags: YoutubePlayerFlags(
-    autoPlay: true,
-    mute: false,
-    ),
-    );    super.initState();
+    event = widget.event;
+    _controller = YoutubePlayerController(
+      initialVideoId: event.videoId,
+      flags: YoutubePlayerFlags(
+        autoPlay: true,
+        mute: false,
+        hideControls: false,
+        useHybridComposition: true,
+      ),
+    );
+    super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -52,7 +58,7 @@ class _EventCardState extends State<EventCard> {
               return SingleChildScrollView(
                 child: Wrap(
                   children: [
-                    Column(
+                    Column(crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           child: YoutubePlayer(
@@ -71,14 +77,14 @@ class _EventCardState extends State<EventCard> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            'Title',
+                            event.title,
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text('description'),
+                          child: Text(event.description,textAlign: TextAlign.center,),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -89,15 +95,12 @@ class _EventCardState extends State<EventCard> {
                                   Padding(
                                     padding: const EdgeInsets.all(16.0),
                                     child: Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
                                       children: [
                                         Expanded(
                                           child: Column(
                                             children: [
                                               Text(
-                                                'fitness components',
-                                                overflow: TextOverflow.ellipsis,
+                                                'Fitness Components',
                                                 maxLines: 2,
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
@@ -105,7 +108,7 @@ class _EventCardState extends State<EventCard> {
                                                 ),
                                               ),
                                               Text(
-                                                'Description',
+                                                event.fitnessComponents,
                                                 textAlign: TextAlign.center,
                                               )
                                             ],
@@ -115,16 +118,14 @@ class _EventCardState extends State<EventCard> {
                                           child: Column(
                                             children: [
                                               Text(
-                                                'standard equipment',
+                                                'Standard Equipment',
                                                 textAlign: TextAlign.center,
-                                                overflow: TextOverflow.ellipsis,
                                                 maxLines: 2,
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold),
                                               ),
                                               Text(
-                                                'Description',
-                                                overflow: TextOverflow.ellipsis,
+                                                event.standardEquipment,
                                                 textAlign: TextAlign.center,
                                               )
                                             ],
@@ -134,16 +135,14 @@ class _EventCardState extends State<EventCard> {
                                           child: Column(
                                             children: [
                                               Text(
-                                                'field test',
+                                                'Field Test',
                                                 textAlign: TextAlign.center,
-                                                overflow: TextOverflow.ellipsis,
                                                 maxLines: 2,
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold),
                                               ),
                                               Text(
-                                                'Description',
-                                                overflow: TextOverflow.ellipsis,
+                                                event.fieldTest,
                                                 textAlign: TextAlign.center,
                                               )
                                             ],
@@ -169,11 +168,11 @@ class _EventCardState extends State<EventCard> {
                                         children: [
                                           Column(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.stretch,
+                                                CrossAxisAlignment.stretch,
                                             children: [
                                               Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.center,
+                                                    CrossAxisAlignment.center,
                                                 children: [
                                                   Text('Proper Technique'),
                                                   Container(
@@ -203,25 +202,30 @@ class _EventCardState extends State<EventCard> {
       },
       child: Wrap(
         children: [
-          Card(
-            child: Column(
-              children: [
-                Container(
-                  height: 100,
-                  color: Colors.amber,
-                ),
-                Container(
-                  height: 50,
-                  child: ListTile(
-                    title: Center(child: Text('Event')),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              child: Column(
+                children: [
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SvgPicture.asset(event.eventImage,alignment: Alignment.center,color: Colors.amber,height: 100,),
+                    ),
                   ),
-                )
-              ],
+                  Container(
+                    color: Colors.amber,
+                    height: 50,
+                    child: ListTile(
+                      title: Center(child: Text(event.title,style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal),)),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ],
       ),
     );
   }
-
 }
