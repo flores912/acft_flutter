@@ -1,5 +1,7 @@
+
 import 'package:acft_flutter/models/event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -13,13 +15,14 @@ class EventCard extends StatefulWidget {
 }
 
 class _EventCardState extends State<EventCard> {
+  double _volume = 100;
+  bool _muted = false;
   bool _isPlayerReady = false;
   late PlayerState _playerState;
   late YoutubeMetaData _videoMetaData;
   late Event event;
 
   late YoutubePlayerController _controller;
-
   void listener() {
     if (_isPlayerReady && mounted && !_controller.value.isFullScreen) {
       setState(() {
@@ -35,17 +38,13 @@ class _EventCardState extends State<EventCard> {
     _controller = YoutubePlayerController(
       initialVideoId: event.videoId,
       flags: YoutubePlayerFlags(
-        mute: false,
         autoPlay: true,
+        mute: false,
         hideControls: false,
+        useHybridComposition: true,
       ),
     );
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 
   @override
@@ -53,165 +52,153 @@ class _EventCardState extends State<EventCard> {
     return GestureDetector(
       onTap: () {
         showModalBottomSheet(
-                context: context,
-                isScrollControlled: true,
-                isDismissible: true,
-                builder: (context) {
-                  return SingleChildScrollView(
-                    child: Wrap(
+            context: context,
+            isScrollControlled: true,
+            builder: (context) {
+              return SingleChildScrollView(
+                child: Wrap(
+                  children: [
+                    Column(crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              child: YoutubePlayer(
-                                controller: _controller,
-                                showVideoProgressIndicator: true,
-                                progressIndicatorColor: Colors.amber,
-                                progressColors: ProgressBarColors(
-                                  playedColor: Colors.amber,
-                                  handleColor: Colors.amberAccent,
-                                ),
-                                onReady: () {
-                                  _controller.addListener(listener);
-                                },
-                              ),
+                        Container(
+                          child: YoutubePlayer(
+                            controller: _controller,
+                            showVideoProgressIndicator: true,
+                            progressIndicatorColor: Colors.amber,
+                            progressColors: ProgressBarColors(
+                              playedColor: Colors.amber,
+                              handleColor: Colors.amberAccent,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                event.title,
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                event.description,
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                child: Card(
-                                  child: Column(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(16.0),
-                                        child: Row(
-                                          children: [
-                                            Expanded(
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    'Fitness Components',
-                                                    maxLines: 2,
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    event.fitnessComponents,
-                                                    textAlign: TextAlign.center,
-                                                  )
-                                                ],
+                            onReady: () {
+                              _controller.addListener(listener);
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            event.title,
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(event.description,textAlign: TextAlign.center,),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            child: Card(
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: Column(
+                                            children: [
+                                              Text(
+                                                'Fitness Components',
+                                                maxLines: 2,
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                ),
                                               ),
-                                            ),
-                                            Expanded(
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    'Standard Equipment',
-                                                    textAlign: TextAlign.center,
-                                                    maxLines: 2,
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                  Text(
-                                                    event.standardEquipment,
-                                                    textAlign: TextAlign.center,
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    'Field Test',
-                                                    textAlign: TextAlign.center,
-                                                    maxLines: 2,
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                  Text(
-                                                    event.fieldTest,
-                                                    textAlign: TextAlign.center,
-                                                  )
-                                                ],
-                                              ),
-                                            )
-                                          ],
+                                              Text(
+                                                event.fitnessComponents,
+                                                textAlign: TextAlign.center,
+                                              )
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                        Expanded(
+                                          child: Column(
+                                            children: [
+                                              Text(
+                                                'Standard Equipment',
+                                                textAlign: TextAlign.center,
+                                                maxLines: 2,
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold),
+                                              ),
+                                              Text(
+                                                event.standardEquipment,
+                                                textAlign: TextAlign.center,
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            children: [
+                                              Text(
+                                                'Field Test',
+                                                textAlign: TextAlign.center,
+                                                maxLines: 2,
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold),
+                                              ),
+                                              Text(
+                                                event.fieldTest,
+                                                textAlign: TextAlign.center,
+                                              )
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                ),
+                                ],
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: ElevatedButton(
-                                  onPressed: () {
-                                    showModalBottomSheet(
-                                        context: context,
-                                        isScrollControlled: true,
-                                        builder: (context) {
-                                          return Wrap(
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ElevatedButton(
+                              onPressed: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    isScrollControlled: true,
+                                    builder: (context) {
+                                      return Wrap(
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.stretch,
                                             children: [
                                               Column(
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.stretch,
+                                                    CrossAxisAlignment.center,
                                                 children: [
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text('Proper Technique'),
-                                                      Container(
-                                                        width: MediaQuery.of(
-                                                                context)
-                                                            .size
-                                                            .width,
-                                                        color: Colors.red,
-                                                        height: 100,
-                                                        child: Text('image'),
-                                                      ),
-                                                    ],
-                                                  )
+                                                  Text('Proper Technique'),
+                                                  Container(
+                                                    width: MediaQuery.of(context)
+                                                        .size
+                                                        .width,
+                                                    color: Colors.red,
+                                                    height: 100,
+                                                    child: Text('image'),
+                                                  ),
                                                 ],
-                                              ),
+                                              )
                                             ],
-                                          );
-                                        });
-                                  },
-                                  child: Text('Tips')),
-                            )
-                          ],
-                        ),
+                                          ),
+                                        ],
+                                      );
+                                    });
+                              },
+                              child: Text('Tips')),
+                        )
                       ],
                     ),
-                  );
-                })
-            .whenComplete(() => _controller
-                .reset()); //todo:keep searching for a way to correctly dispose of the controller.
+                  ],
+                ),
+              );
+            });
       },
       child: Wrap(
         children: [
@@ -223,24 +210,14 @@ class _EventCardState extends State<EventCard> {
                   Container(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: SvgPicture.asset(
-                        event.eventImage,
-                        alignment: Alignment.center,
-                        color: Colors.amber,
-                        height: 100,
-                      ),
+                      child: SvgPicture.asset(event.eventImage,alignment: Alignment.center,color: Colors.amber,height: 100,),
                     ),
                   ),
                   Container(
                     color: Colors.amber,
                     height: 50,
                     child: ListTile(
-                      title: Center(
-                          child: Text(
-                        event.title,
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.normal),
-                      )),
+                      title: Center(child: Text(event.title,style: TextStyle(color: Colors.black,fontWeight: FontWeight.normal),)),
                     ),
                   )
                 ],

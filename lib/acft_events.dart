@@ -129,7 +129,7 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
               Expanded(
                 child: EventCard(
                   event: Event(
-                      'MDl',
+                      '5,000 Meter Row',
                       'desc.',
                       'tips',
                       'technique',
@@ -137,7 +137,7 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                       '60 and 100 point scores: 140 pounds and 340 pounds',
                       'Muscular strength, balance and flexibility',
                       '60-pound hex bar and plates',
-                      'assets/deadlift_acft.svg'),
+                      'assets/rowing_machine.svg'),
                 ),
               ),
               Expanded(

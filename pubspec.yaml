@@ -54,6 +54,9 @@ flutter:
     - assets/legtuck_plank_acft.svg
     - assets/run_acft.svg
     - assets/rowing_machine.svg
+    - assets/stationary-bike.svg
+    - assets/swimming.svg
+
 
   #   - images/a_dot_ham.jpeg
 
