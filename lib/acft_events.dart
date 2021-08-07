@@ -40,8 +40,6 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                       event: Event(
                           'MDL',
                           'The MDL event represents movements required to safely and effectively lift heavy loads from the ground, jump, bound and tolerate landing. It requires well-conditioned back and leg muscles and helps Soldiers to avoid upper and lower back injuries caused by moving long distances under heavy load.',
-                          'tips',
-                          'technique',
                           '0fLRZnSBQSc',
                           '60 and 100 point scores: 140 pounds and 340 pounds',
                           'Muscular strength, balance and flexibility',
@@ -52,8 +50,6 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                       event: Event(
                           'SPT',
                           'The SPT event represents tasks requiring quick explosive movements to maneuver equipment and personnel.',
-                          'tips',
-                          'technique',
                           'bqlgEg78qnM',
                           '60 and 100 point scores: 4.5 and 12.5 meters',
                           'Explosive power, balance, and flexibility',
@@ -64,12 +60,10 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                       event: Event(
                         'HRP',
                         'The HRP is an upper body endurance test that represents repetitive and sustained pushing used in combat tasks.',
-                        'tips',
-                        'technique',
                         'j7WEyYQRPC8',
                         '60 and 100 point scores: 10 and 60 repetitions',
                         'Muscular endurance',
-                        'Level field',
+                        'Level surface',
                         'assets/pushup_acft.svg',
                       ),
                     ),
@@ -81,8 +75,6 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                       event: Event(
                         'SDC',
                         'The SDC is a test of strength, endurance, and anaerobic capacity, which are needed to accomplish high intensity combat tasks that last from a few seconds to several minutes.',
-                        'tips',
-                        'technique',
                         'V-NIDQIk39M',
                         '60 and 100 point scores: 3:00 and 1:33 minutes',
                         'Agility, anaerobic endurance, muscular endurance and muscular strength',
@@ -94,8 +86,6 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                       event: Event(
                           'LTK or PLK',
                           'The LTK assesses the strength of the Soldiers grip, arm, shoulder and trunk muscles. These muscles assist Soldiers in load carriage and in avoiding injuries to the back.The PLK is an alternate assessment that may be used. The plank helps build core strength that promotes back health and helps reduce injuries.',
-                          'tips',
-                          'technique',
                           'bXSHlJVjpIM',
                           '60 and 100 point scores: 140 pounds and 340 pounds',
                           'Muscular strength and endurance',
@@ -106,8 +96,6 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                       event: Event(
                           '2MR',
                           'The run event measures aerobic endurance, which is required for conducting continuous operations and ground movements on foot. Higher aerobic endurance allows the body to recover quickly in preparation for executing other physically demanding tasks that may arise during a ground movement, such as reacting quickly to enemy contact.',
-                          'tips',
-                          'technique',
                           'DMuaZKnkvG4',
                           '60 and 100 point scores: 21:00 and 13:30 minutes',
                           'Aerobic endurance',
@@ -129,8 +117,6 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
               event: Event(
                   '5,000 Meter Row',
                   'Alternate non-impact aerobic test events include a 5,000 meter row, a 12,000 meter stationary bike, a 1,000 meter swim. During this ACFT 3.0 data collection period, Soldiers with permanent profiles will take all ACFT events within the limits of their profile, to include either the 2 mile run or one of the alternate non-impact aerobic test events.',
-                  'tips',
-                  'technique',
                   'ojEtzsWSutw',
                   'Point scales are currently being developed. The current 60 point PASS/FAIL time equals 25 minutes.',
                   'Aerobic Endurance',
@@ -141,8 +127,6 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
               event: Event(
                   '12,000 Meter Staionary Bike',
                   'Alternate non-impact aerobic test events include a 5,000 meter row, a 12,000 meter stationary bike, a 1,000 meter swim. During this ACFT 3.0 data collection period, Soldiers with permanent profiles will take all ACFT events within the limits of their profile, to include either the 2 mile run or one of the alternate non-impact aerobic test events.',
-                  'tips',
-                  'technique',
                   '_-yylQcn6Ns',
                   'Point scales are currently being developed. The current 60 point PASS/FAIL time equals 25 minutes.',
                   'Aerobic Endurance',
@@ -153,8 +137,6 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
               event: Event(
                   '1,000 Meter Swim',
                   'Alternate non-impact aerobic test events include a 5,000 meter row, a 12,000 meter stationary bike, a 1,000 meter swim. During this ACFT 3.0 data collection period, Soldiers with permanent profiles will take all ACFT events within the limits of their profile, to include either the 2 mile run or one of the alternate non-impact aerobic test events.',
-                  'tips',
-                  'technique',
                   'C22lSycp21g',
                   'Point scales are currently being developed. The current 60 point PASS/FAIL time equals 25 minutes.',
                   'Aerobic Endurance',

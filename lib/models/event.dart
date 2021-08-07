@@ -3,16 +3,14 @@ import 'package:flutter/material.dart';
 class Event {
   final String title;
   final String description;
-  final String tips;
-  final String technique;
   final String videoId;
   final String fieldTest;
   final String fitnessComponents;
   final String standardEquipment;
   final String eventImage;
 
-  Event(this.title, this.description, this.tips, this.technique, this.videoId,
-      this.fieldTest, this.fitnessComponents, this.standardEquipment, this.eventImage);
+  Event(this.title, this.description, this.videoId, this.fieldTest,
+      this.fitnessComponents, this.standardEquipment, this.eventImage);
 
   int calculateMDLScore(int pounds) {
     int score = 0;
