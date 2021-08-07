@@ -96,7 +96,7 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                           'The LTK assesses the strength of the Soldiers grip, arm, shoulder and trunk muscles. These muscles assist Soldiers in load carriage and in avoiding injuries to the back.The PLK is an alternate assessment that may be used. The plank helps build core strength that promotes back health and helps reduce injuries.',
                           'tips',
                           'technique',
-                          '0fLRZnSBQSc',
+                          'bXSHlJVjpIM',
                           '60 and 100 point scores: 140 pounds and 340 pounds',
                           'Muscular strength and endurance',
                           'LEG TUCK: Climbing bar PLANK: Level surface',
