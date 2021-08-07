@@ -1,4 +1,5 @@
 import 'package:acft_flutter/models/event.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -75,7 +76,7 @@ class _EventCardState extends State<EventCard> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
                               child: Text(
                                 event.title,
                                 style: TextStyle(
@@ -98,60 +99,89 @@ class _EventCardState extends State<EventCard> {
                                       Padding(
                                         padding: const EdgeInsets.all(16.0),
                                         child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Expanded(
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    'Fitness Components',
-                                                    maxLines: 2,
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(4.0),
+                                                child: Column(
+                                                  children: [
+                                                    Icon(
+                                                      Icons.run_circle_outlined,
+                                                      color: Colors.amber,
                                                     ),
-                                                  ),
-                                                  Text(
-                                                    event.fitnessComponents,
-                                                    textAlign: TextAlign.center,
-                                                  )
-                                                ],
+                                                    Text(
+                                                      'Fitness Components',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      event.fitnessComponents,
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                    )
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                             Expanded(
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    'Standard Equipment',
-                                                    textAlign: TextAlign.center,
-                                                    maxLines: 2,
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                  Text(
-                                                    event.standardEquipment,
-                                                    textAlign: TextAlign.center,
-                                                  )
-                                                ],
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(4.0),
+                                                child: Column(
+                                                  children: [
+                                                    Icon(
+                                                      Icons.fitness_center,
+                                                      color: Colors.amber,
+                                                    ),
+                                                    Text(
+                                                      'Standard Equipment',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                    Text(
+                                                      event.standardEquipment,
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                    )
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                             Expanded(
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    'Field Test',
-                                                    textAlign: TextAlign.center,
-                                                    maxLines: 2,
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ),
-                                                  Text(
-                                                    event.fieldTest,
-                                                    textAlign: TextAlign.center,
-                                                  )
-                                                ],
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(4.0),
+                                                child: Column(
+                                                  children: [
+                                                    Icon(
+                                                      Icons.done,
+                                                      color: Colors.amber,
+                                                    ),
+                                                    Text(
+                                                      'Field Test',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                                    Text(
+                                                      event.fieldTest,
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                    )
+                                                  ],
+                                                ),
                                               ),
                                             )
                                           ],
