@@ -18,7 +18,8 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ACFT'),
+        backgroundColor: Colors.black12,
+        title: Text('ACFT',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
         centerTitle: true,
       ),
       body: SingleChildScrollView(

@@ -220,14 +220,13 @@ class _EventCardState extends State<EventCard> {
                     ),
                   ),
                   Container(
-                    color: Colors.amber,
                     child: ListTile(
                       title: Center(
                           child: Text(
                         event.title,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.normal),
+                             fontWeight: FontWeight.normal),
                       )),
                     ),
                   )
