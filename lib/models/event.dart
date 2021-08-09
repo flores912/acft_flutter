@@ -19,8 +19,8 @@ class Event {
       this.fitnessComponents,
       this.standardEquipment,
       this.eventImage,
-      this.maxValue,
-      this.minValue);
+      this.minValue,
+      this.maxValue);
 
   int calculateMDLScore(int pounds) {
     int score = 0;

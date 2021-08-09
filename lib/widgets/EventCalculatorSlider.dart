@@ -23,6 +23,7 @@ class _EventCalculatorSliderState extends State<EventCalculatorSlider> {
     _event = widget.event;
     _maxValue = _event.maxValue.toDouble();
     _minValue = _event.minValue.toDouble();
+    _currentValue = _event.minValue.toDouble();
 
     super.initState();
   }
@@ -30,17 +31,23 @@ class _EventCalculatorSliderState extends State<EventCalculatorSlider> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Slider(
-        value: _currentValue,
-        max: _maxValue,
-        min: _minValue,
-        onChanged: (double newValue) {
-          setState(() {
-            setState(() {
-              _currentValue = newValue;
-            });
-          });
-        },
+      child: Column(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(_event.calculateMDLScore(_currentValue.toInt()).toString()+ ' points'),
+          Text(_currentValue.toInt().toString() + ' lbs'),
+          Slider(
+            value: _currentValue,
+            max: _maxValue,
+            min: _minValue,
+            onChanged: (double newValue) {
+              setState(() {
+                setState(() {
+                  _currentValue = newValue;
+                });
+              });
+            },
+          ),
+        ],
       ),
     );
   }
