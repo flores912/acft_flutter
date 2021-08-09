@@ -19,7 +19,10 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black12,
-        title: Text('ACFT',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+        title: Text(
+          'ACFT',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -45,7 +48,9 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                           '60 and 100 point scores: 140 pounds and 340 pounds',
                           'Muscular strength, balance and flexibility',
                           '60-pound hex bar and plates',
-                          'assets/deadlift_acft.svg'),
+                          'assets/deadlift_acft.svg',
+                          80,
+                          340),
                     ),
                     EventCard(
                       event: Event(
@@ -55,18 +60,21 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                           '60 and 100 point scores: 4.5 and 12.5 meters',
                           'Explosive power, balance, and flexibility',
                           '10-pound medicine ball',
-                          'assets/powerthrow_acft.svg'),
+                          'assets/powerthrow_acft.svg',
+                          3.3,
+                          12.5),
                     ),
                     EventCard(
                       event: Event(
-                        'HRP',
-                        'The HRP is an upper body endurance test that represents repetitive and sustained pushing used in combat tasks.',
-                        'j7WEyYQRPC8',
-                        '60 and 100 point scores: 10 and 60 repetitions',
-                        'Muscular endurance',
-                        'Level surface',
-                        'assets/pushup_acft.svg',
-                      ),
+                          'HRP',
+                          'The HRP is an upper body endurance test that represents repetitive and sustained pushing used in combat tasks.',
+                          'j7WEyYQRPC8',
+                          '60 and 100 point scores: 10 and 60 repetitions',
+                          'Muscular endurance',
+                          'Level surface',
+                          'assets/pushup_acft.svg',
+                          0,
+                          60),
                     ),
                   ]),
                 ),
@@ -74,14 +82,16 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                   child: Column(children: [
                     EventCard(
                       event: Event(
-                        'SDC',
-                        'The SDC is a test of strength, endurance, and anaerobic capacity, which are needed to accomplish high intensity combat tasks that last from a few seconds to several minutes.',
-                        'V-NIDQIk39M',
-                        '60 and 100 point scores: 3:00 and 1:33 minutes',
-                        'Agility, anaerobic endurance, muscular endurance and muscular strength',
-                        '2x40-pound kettlebells and 90-pound sled',
-                        'assets/dragcarry_acft.svg',
-                      ),
+                          'SDC',
+                          'The SDC is a test of strength, endurance, and anaerobic capacity, which are needed to accomplish high intensity combat tasks that last from a few seconds to several minutes.',
+                          'V-NIDQIk39M',
+                          '60 and 100 point scores: 3:00 and 1:33 minutes',
+                          'Agility, anaerobic endurance, muscular endurance and muscular strength',
+                          '2x40-pound kettlebells and 90-pound sled',
+                          'assets/dragcarry_acft.svg',
+                          205,
+                          93 //values in seconds
+                          ),
                     ),
                     EventCard(
                       event: Event(
@@ -91,22 +101,26 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                           '60 and 100 point scores: 140 pounds and 340 pounds',
                           'Muscular strength and endurance',
                           'LEG TUCK: Climbing bar PLANK: Level surface',
-                          'assets/legtuck_plank_acft.svg'),
+                          'assets/legtuck_plank_acft.svg',
+                          0,
+                          20), //PLK : min=<105 secs max:260 secs
                     ),
                     EventCard(
                       event: Event(
-                          '2MR',
-                          'The run event measures aerobic endurance, which is required for conducting continuous operations and ground movements on foot. Higher aerobic endurance allows the body to recover quickly in preparation for executing other physically demanding tasks that may arise during a ground movement, such as reacting quickly to enemy contact.',
-                          'DMuaZKnkvG4',
-                          '60 and 100 point scores: 21:00 and 13:30 minutes',
-                          'Aerobic endurance',
-                          'Two mile run route on level field, track or running surface',
-                          'assets/run_acft.svg'),
+                        '2MR',
+                        'The run event measures aerobic endurance, which is required for conducting continuous operations and ground movements on foot. Higher aerobic endurance allows the body to recover quickly in preparation for executing other physically demanding tasks that may arise during a ground movement, such as reacting quickly to enemy contact.',
+                        'DMuaZKnkvG4',
+                        '60 and 100 point scores: 21:00 and 13:30 minutes',
+                        'Aerobic endurance',
+                        'Two mile run route on level field, track or running surface',
+                        'assets/run_acft.svg', 1368, 810, // time in seconds
+                      ),
                     ),
                   ]),
                 ),
               ],
             ),
+            //ALTERNATE EVENTS here
             Padding(
               padding: const EdgeInsets.all(16),
               child: Text(
@@ -122,7 +136,9 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                   'Point scales are currently being developed. The current 60 point PASS/FAIL time equals 25 minutes.',
                   'Aerobic Endurance',
                   'Stationary Rower',
-                  'assets/rowing_machine.svg'),
+                  'assets/rowing_machine.svg',
+                  null,
+                  null),
             ),
             EventCard(
               event: Event(
@@ -132,7 +148,9 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                   'Point scales are currently being developed. The current 60 point PASS/FAIL time equals 25 minutes.',
                   'Aerobic Endurance',
                   'Stationary Bike',
-                  'assets/stationary-bike.svg'),
+                  'assets/stationary-bike.svg',
+                  null,
+                  null),
             ),
             EventCard(
               event: Event(
@@ -142,7 +160,9 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                   'Point scales are currently being developed. The current 60 point PASS/FAIL time equals 25 minutes.',
                   'Aerobic Endurance',
                   '25m or 50m pool',
-                  'assets/swimming.svg'),
+                  'assets/swimming.svg',
+                  null,
+                  null),
             ),
           ],
         ),

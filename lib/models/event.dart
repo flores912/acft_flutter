@@ -8,9 +8,19 @@ class Event {
   final String fitnessComponents;
   final String standardEquipment;
   final String eventImage;
+  final dynamic maxValue;
+  final dynamic minValue;
 
-  Event(this.title, this.description, this.videoId, this.fieldTest,
-      this.fitnessComponents, this.standardEquipment, this.eventImage);
+  Event(
+      this.title,
+      this.description,
+      this.videoId,
+      this.fieldTest,
+      this.fitnessComponents,
+      this.standardEquipment,
+      this.eventImage,
+      this.maxValue,
+      this.minValue);
 
   int calculateMDLScore(int pounds) {
     int score = 0;
