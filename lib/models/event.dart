@@ -11,7 +11,7 @@ class Event {
   final dynamic maxValue;
   final dynamic minValue;
 
-  Event(
+ const Event(
       this.title,
       this.description,
       this.videoId,
