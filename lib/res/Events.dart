@@ -1,4 +1,4 @@
-import 'package:acft_flutter/models/event.dart';
+import 'package:acft_flutter/models/Event.dart';
 
 class Events {
   //MAIN EVENTS

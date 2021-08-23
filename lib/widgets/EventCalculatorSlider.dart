@@ -1,4 +1,4 @@
-import 'package:acft_flutter/models/event.dart';
+import 'package:acft_flutter/models/Event.dart';
 import 'package:flutter/material.dart';
 
 class EventCalculatorSlider extends StatefulWidget {
@@ -33,6 +33,8 @@ class _EventCalculatorSliderState extends State<EventCalculatorSlider> {
     return Card(
       child: Column(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          //todo:create a GETTER for score on event class
+          //  THIS WILL SEPERATE LOGIC FROM UI.
           Text(_event.calculateMDLScore(_currentValue.toInt()).toString()+ ' points'),
           Text(_currentValue.toInt().toString() + ' lbs'),
           Slider(

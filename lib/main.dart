@@ -1,5 +1,5 @@
-import 'package:acft_flutter/acft_events.dart';
-import 'package:acft_flutter/home.dart';
+import 'package:acft_flutter/AcftEvents.dart';
+import 'package:acft_flutter/Home.dart';
 import 'package:flutter/material.dart';
 
 void main() {

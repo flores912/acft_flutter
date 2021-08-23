@@ -1,8 +1,8 @@
-import 'package:acft_flutter/models/event.dart';
+import 'package:acft_flutter/models/Event.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import 'res/events.dart';
+import 'res/Events.dart';
 
 import 'widgets/EventCard.dart';
 //TODO: MAKE LAYOUT RESPONSIVE!!!!!

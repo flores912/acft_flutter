@@ -1,6 +1,6 @@
 import 'package:acft_flutter/CalculatorPage.dart';
 import 'package:acft_flutter/StatisticsPage.dart';
-import 'package:acft_flutter/acft_events.dart';
+import 'package:acft_flutter/AcftEvents.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
