@@ -31,11 +31,14 @@ class _EventCalculatorSliderState extends State<EventCalculatorSlider> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Column(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.start,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //todo:create a GETTER for score on event class
-          //  THIS WILL SEPERATE LOGIC FROM UI.
-          Text(_event.calculateMDLScore(_currentValue.toInt()).toString()+ ' points'),
+          //  THIS WILL SEPARATE LOGIC FROM UI.
+          Text(_event.calculateMDLScore(_currentValue.toInt()).toString() +
+              ' points'),
           Text(_currentValue.toInt().toString() + ' lbs'),
           Slider(
             value: _currentValue,

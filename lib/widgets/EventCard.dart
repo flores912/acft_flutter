@@ -225,8 +225,7 @@ class _EventCardState extends State<EventCard> {
                           child: Text(
                         event.title,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                             fontWeight: FontWeight.normal),
+                        style: TextStyle(fontWeight: FontWeight.normal),
                       )),
                     ),
                   )
