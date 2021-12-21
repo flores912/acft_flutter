@@ -13,6 +13,15 @@ class CalculatorPage extends StatefulWidget {
 class _CalculatorPageState extends State<CalculatorPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: EventCalculatorSlider(event: Events.deadlift),);
+    return Scaffold(
+      body: SafeArea(
+          child: Column(
+        children: [
+          EventCalculatorSlider(event: Events.deadlift),
+          EventCalculatorSlider(event: Events.powerThrow),
+          EventCalculatorSlider(event: Events.pushup),
+        ],
+      )),
+    );
   }
 }

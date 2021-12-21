@@ -41,16 +41,11 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
               children: [
                 Expanded(
                   child: Column(children: [
-                    //todo:
                     EventCard(
                       event: Events.deadlift,
                     ),
-                    EventCard(
-                      event: Events.powerThrow
-                    ),
-                    EventCard(
-                      event:Events.pushup
-                    ),
+                    EventCard(event: Events.powerThrow),
+                    EventCard(event: Events.pushup),
                   ]),
                 ),
                 Expanded(
@@ -59,7 +54,8 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                       event: Events.dragCarry,
                     ),
                     EventCard(
-                      event: Events.legTuckOrPlank, //PLK : min=<105 secs max:260 secs
+                      event: Events
+                          .legTuckOrPlank, //PLK : min=<105 secs max:260 secs
                     ),
                     EventCard(
                       event: Events.run,
@@ -76,9 +72,7 @@ class _AcftEventsPageState extends State<AcftEventsPage> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
             ),
-            EventCard(
-              event:Events.row
-            ),
+            EventCard(event: Events.row),
             EventCard(
               event: Events.bike,
             ),

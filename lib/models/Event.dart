@@ -1,4 +1,10 @@
+import 'package:acft_flutter/models/event.dart';
 import 'package:flutter/material.dart';
+
+/*
+******** TODO:
+*         -CREATE GETTERS FOR SCORES ON EACH INDIVIDUAL EVENT
+ */
 
 class Event {
   final String title;
@@ -10,17 +16,22 @@ class Event {
   final String eventImage;
   final dynamic maxValue;
   final dynamic minValue;
+  final String unitOfMeasurement;
+  final int decimalPlaces;
 
   const Event(
-      this.title,
-      this.description,
-      this.videoId,
-      this.fieldTest,
-      this.fitnessComponents,
-      this.standardEquipment,
-      this.eventImage,
-      this.minValue,
-      this.maxValue);
+    this.title,
+    this.description,
+    this.videoId,
+    this.fieldTest,
+    this.fitnessComponents,
+    this.standardEquipment,
+    this.eventImage,
+    this.minValue,
+    this.maxValue,
+    this.unitOfMeasurement,
+    this.decimalPlaces, //todo:make it nullable?
+  );
 
   int calculateMDLScore(int pounds) {
     int score = 0;
@@ -306,34 +317,34 @@ class Event {
     if (reps == 9) {
       score = 55;
     }
-    if (reps == 10 && reps == 11) {
+    if (reps == 10 || reps == 11) {
       score = 60;
     }
-    if (reps == 12 && reps == 13) {
+    if (reps == 12 || reps == 13) {
       score = 61;
     }
-    if (reps == 14 && reps == 15) {
+    if (reps == 14 || reps == 15) {
       score = 62;
     }
-    if (reps == 16 && reps == 17) {
+    if (reps == 16 || reps == 17) {
       score = 63;
     }
-    if (reps == 18 && reps == 19) {
+    if (reps == 18 || reps == 19) {
       score = 64;
     }
-    if (reps == 20 && reps == 21) {
+    if (reps == 20 || reps == 21) {
       score = 65;
     }
-    if (reps == 22 && reps == 23) {
+    if (reps == 22 || reps == 23) {
       score = 66;
     }
-    if (reps == 24 && reps == 25) {
+    if (reps == 24 || reps == 25) {
       score = 67;
     }
-    if (reps == 26 && reps == 27) {
+    if (reps == 26 || reps == 27) {
       score = 68;
     }
-    if (reps == 28 && reps == 29) {
+    if (reps == 28 || reps == 29) {
       score = 69;
     }
     if (reps == 30) {
@@ -1457,5 +1468,17 @@ class Event {
     }
 
     return score;
+  }
+
+  dynamic getScore(dynamic points) {
+    if (title == 'MDL') {
+      return calculateMDLScore(points.toInt());
+    }
+    if (title == 'SPT') {
+      return calculateSPT(points.toDouble());
+    }
+    if (title == 'HRP') {
+      return calculateHRP(points.toInt());
+    }
   }
 }
